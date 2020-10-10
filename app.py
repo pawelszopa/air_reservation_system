@@ -45,7 +45,12 @@ class Flight:
         self.seating_plan[row][letter] = passenger
 
     def relocate_passenger(self, seat_from, seat_to):
-        pass
+        row_to, letter_to = self._parse_seat(seat_to)
+        if self.seating_plan[row_to][letter_to] is not None:
+            raise ValueError(f"Seat is already taken {seat_to}")
+        row_from, letter_from = self._parse_seat(seat_from)
+        self.seating_plan[row_to][letter_to] = self.seating_plan[row_from][letter_from]
+        self.seating_plan[row_from][letter_from] = None
 
 
 class Airplane:
@@ -86,4 +91,6 @@ f = Flight('BA123', Boeing737())
 f.allocate_passenger('Lech K', '1A')
 f.allocate_passenger('Jaroslaw K', '2B')
 f.allocate_passenger('Pawel K', '3B')
+pprint(f.seating_plan)
+f.relocate_passenger('2B', "14C")
 pprint(f.seating_plan)
