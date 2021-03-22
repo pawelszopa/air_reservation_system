@@ -3,7 +3,7 @@ from airplane import Airplane
 
 class AirbusA370(Airplane):
     @staticmethod
-    def get_name():  # jako że jest statyczna nie trzeba selfa
+    def get_name():
         return "Airbus A370"
 
     @staticmethod

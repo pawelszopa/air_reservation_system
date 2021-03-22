@@ -20,7 +20,7 @@ class Flight:
         letter = seat[-1]
 
         if letter not in seats:
-            raise ValueError(f'Invalid seat letter {letter}')  # przerwie funkcje
+            raise ValueError(f'Invalid seat letter {letter}')
 
         row_text = seat[:-1]
 
@@ -58,7 +58,6 @@ class Flight:
                    if row is not None)
 
     def print_cards(self, printer):
-        # passeengers = self.get_passengers()
         for passenger, seat in self.get_passengers():
             printer(passenger, seat, self.get_airplane_model(), self.flight_number)
 
@@ -69,17 +68,3 @@ class Flight:
                 passenger = self.seating_plan[row][letter]
                 if passenger is not None:
                     yield passenger, f'{row}{letter}'
-
-
-''' generatory  get passenger
-
-        rows, letters  = self.seating_plan()
-        for row in rows:
-            for letter in letters:
-                passenger = self.seating_plan[row][letter]
-                if passenger is not None:
-                    passenger_data= passenger,f'{row}{letter}'
-                    passengers.append(passenger_data)
-
-        return passengers
-'''
